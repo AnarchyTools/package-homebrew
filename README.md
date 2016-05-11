@@ -17,11 +17,11 @@ To get AT tools in our official repos, do the following:
 
 # Maintainer notes
 
-package-homebrew is self-hosting; it does not require AT to build.  This is primarily because we want to use it to package atbuild itself, so it cannot depend on atbuild to work.
+`package-homebrew` is self-hosting; it does not require AT to build.  This is primarily because we want to use it to package [`atbuild`](https://github.com/AnarchyTools/atbuild) itself, so it cannot depend on `atbuild` to work.
 
 For these reasons, it's written in shell, largely glues together standard OSX tools, and there is no compile step.  It's a manually-mananged [`atbin`](http://anarchytools.org/docs/atbin.html) format.  
 
-As a result, package-homebrew is used to package itself, which is basically the test of its correctness.
+As a result, `package-homebrew` is used to package itself, which is basically the test of its correctness.
 
 
 
