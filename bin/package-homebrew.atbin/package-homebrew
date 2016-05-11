@@ -58,7 +58,7 @@ fi
 
 ATBIN="bin/${NAME}.atbin"
 # look up payload by parsing the atbin format
-PAYLOAD=`grep -o ':payload .*' bin/package-homebrew.atbin/compiled.atpkg | grep -Eo '".*"' | tr -d '"'`
+PAYLOAD=`grep -o ':payload .*' ${ATBIN}/compiled.atpkg | grep -Eo '".*"' | tr -d '"'`
 
 echo "Compressing atbin..."
 # compress the atbin file
