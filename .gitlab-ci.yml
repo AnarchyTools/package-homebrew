@@ -1,5 +1,8 @@
+stages:
+- build
+
 variables:
-    ATBUILD_PACKAGE_VERSION=0.1
+    ATBUILD_PACKAGE_VERSION: 0.1
 osx:
     stage: build
     script: 
