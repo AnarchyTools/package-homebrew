@@ -1,0 +1,6 @@
+(package
+:name "package-homebrew"
+:payload "package-homebrew"
+:platforms ["osx"]
+:type "executable"
+)
