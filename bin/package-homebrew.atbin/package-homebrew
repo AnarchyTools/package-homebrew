@@ -63,7 +63,7 @@ PAYLOAD=`grep -o ':payload .*' bin/package-homebrew.atbin/compiled.atpkg | grep 
 echo "Compressing atbin..."
 # compress the atbin file
 COMPRESSED="bin/${NAME}-${ATBUILD_PACKAGE_VERSION}-osx.atbin.tar.xz"
-tar c --options "xz:compression-level=9" -Jf ${COMPRESSED} bin/${NAME}.atbin -C bin
+tar c --options "xz:compression-level=9" -Jf ${COMPRESSED} -C bin ${NAME}.atbin
 
 # we defer this so we can already have the atbin compressed at this point
 if [ -z ${URL+x} ]; then
