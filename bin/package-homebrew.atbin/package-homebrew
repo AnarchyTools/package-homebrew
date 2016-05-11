@@ -93,7 +93,8 @@ class $RUBYCASE < Formula
   sha256 \"$SHA\"
 
   def install
-    bin.install \"${NAME}.atbin/${PAYLOAD}\"
+  # We don't need the folder name here; it seems to be supplied automatically
+    bin.install \"${PAYLOAD}\"
   end
 end" > bin/${NAME}.rb
 echo "Wrote formula to bin/${NAME}.rb"
