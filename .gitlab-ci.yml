@@ -1,0 +1,12 @@
+variables:
+    ATBUILD_PACKAGE_VERSION=0.1
+osx:
+    stage: build
+    script: 
+        - bash bin/package-homebrew.atbin/package-homebrew --name package-homebrew --github-project AnarchyTools/package-homebrew
+    tags:
+        - osx
+    artifacts:
+        paths:
+            - bin/package-homebrew-*.tar.xz
+            - bin/package-homebrew.rb
