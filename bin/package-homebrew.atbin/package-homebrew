@@ -76,12 +76,16 @@ if [ -z ${URL+x} ]; then
 fi
 # compute the sha256 sum
 
-SHA=`shasum -a 256 bin/${NAME}.atbin.tar.xz`
+SHA=`shasum -a 256 ${COMPRESSED}`
+
+#Convert hyphens to RUBYCASE
+#behold the power of perl
+RUBYCASE=`echo "$NAME" | perl -pe 's/(^|-)./uc($&)/ge;s/-//g'`
 
 echo "
 # Documentation: https://github.com/Homebrew/brew/blob/master/share/doc/homebrew/Formula-Cookbook.md
 #                http://www.rubydoc.info/github/Homebrew/brew/master/Formula
-class Atbuild < Formula
+class $RUBYCASE < Formula
   desc \"No description!  file a bug at https://github.com/AnarchyTools/package-homebrew/issues\"
   homepage \"No homepage! file a bug at https://github.com/AnarchyTools/package-homebrew/issues\"
   url \"${URL}\"
