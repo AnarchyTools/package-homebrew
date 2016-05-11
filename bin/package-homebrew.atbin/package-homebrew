@@ -96,5 +96,5 @@ class $RUBYCASE < Formula
   # We don't need the folder name here; it seems to be supplied automatically
     bin.install \"${PAYLOAD}\"
   end
-end" > bin/${NAME}.rb
-echo "Wrote formula to bin/${NAME}.rb"
+end" > bin/${PAYLOAD}.rb
+echo "Wrote formula to bin/${PAYLOAD}.rb"
