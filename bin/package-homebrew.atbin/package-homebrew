@@ -29,6 +29,12 @@ set -e
         shift
     fi
     ;;
+    --github-project)
+    if [ -n "$2" ]; then
+        GITHUB_PROJECT=$2
+        shift
+    fi
+    ;;
     *)
     if [ "$1" == "" ]; then
        break
@@ -56,12 +62,17 @@ PAYLOAD=`grep -o ':payload .*' bin/package-homebrew.atbin/compiled.atpkg | grep 
 
 echo "Compressing atbin..."
 # compress the atbin file
-tar c --options "xz:compression-level=9" -Jf bin/${NAME}.atbin.tar.xz bin/${NAME}.atbin -C bin
+COMPRESSED="bin/${NAME}-${ATBUILD_PACKAGE_VERSION}.atbin.tar.xz"
+tar c --options "xz:compression-level=9" -Jf ${COMPRESSED} bin/${NAME}.atbin -C bin
 
 # we defer this so we can already have the atbin compressed at this point
 if [ -z ${URL+x} ]; then
-   echo "URL is required"
-   exit 1
+    if [ -z ${GITHUB_PROJECT+x} ]; then
+        echo "--url or --github-project is required"
+        exit 1
+    else
+        URL="https://github.com/${GITHUB_PROJECT}/releases/download/${ATBUILD_PACKAGE_VERSION}/${NAME}-${ATBUILD_PACKAGE_VERSION}.tar.xz"
+    fi
 fi
 # compute the sha256 sum
 
